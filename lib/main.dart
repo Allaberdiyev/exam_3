@@ -1,3 +1,4 @@
+import 'package:exam_3/views/screens/home_screen.dart';
 import 'package:exam_3/views/screens/product_http_service.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ProductHttpService();
-    );
+        debugShowCheckedModeBanner: false, home: HomeScreen());
   }
 }

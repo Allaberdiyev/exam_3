@@ -3,13 +3,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ProductHttpService {
-  Future<List<Product>> getProducts() async {
+  Future<List<Products>> getProduct() async {
     Uri url = Uri.parse(
         'https://examproject-6ab96-default-rtdb.firebaseio.com/categories.json');
     final response = await http.get(url);
-    List<Product> _productList = [];
-    List<Product> _computercategory = [];
-    List<Product> _housecategory = [];
+    List<Products> _productList = [];
+    List<Products> _computercategory = [];
+    List<Products> _housecategory = [];
     List<String> _allcategories = [];
 
     if (response.statusCode == 200) {
@@ -18,47 +18,47 @@ class ProductHttpService {
         _allcategories.add(key);
         if (key == 'computer' && value is List) {
           for (var productData in value) {
-            final product = Product(
+            final product = Car(
               auksiontime: productData['auksiontime'],
               name: productData['name'],
-              categoryID: key,
+              // categoryID: key,
               description: productData['description'],
               endprice: productData['endprice'],
-              id: productData['id'].toString(),
+              // id: productData['id'].toString(),
               images: productData['images'],
               rating: productData['rating'],
               startprice: productData['startprice'],
             );
             print('name');
 
-            _productList.add(product);
-            _computercategory.add(product);
+            // _productList.add(product);
+            // _computercategory.add(product);
           }
         }
         if (key == 'uylar' && value is Map) {
           final images = value['images'];
           value.forEach((houseKey, houseData) {
             if (houseKey != 'images') {
-              final product = Product(
+              final product = Car(
                 auksiontime: houseData['auksiontime'],
                 name: 'House',
-                categoryID: key,
+                // categoryID: key,
                 description: houseData['description'],
                 endprice: houseData['endprice'],
-                id: houseData.containsKey('id')
-                    ? houseData['id'].toString()
-                    : DateTime.now().millisecondsSinceEpoch.toString(),
+                // id: houseData.containsKey('id')
+                // ? houseData['id'].toString()
+                // : DateTime.now().millisecondsSinceEpoch.toString(),
                 images: images,
                 rating: houseData['rating'],
                 startprice: houseData['startprice'],
               );
-              _productList.add(product);
-              _housecategory.add(product);
+              // _productList.add(product);
+              // _housecategory.add(product);
             }
           });
         }
       });
-      return _productList;
+      // return _productList;
     } else {
       throw Exception('Failed to load products');
     }
