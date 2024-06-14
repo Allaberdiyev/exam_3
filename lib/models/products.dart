@@ -26,7 +26,7 @@ class Car {
   final String auksiontime;
   final String description;
   final int endprice;
-  final List<Image> images;
+  final List<dynamic> images;
   final String name;
   final int rating;
   final int startprice;
@@ -55,7 +55,7 @@ class Car {
         "auksiontime": auksiontime,
         "description": description,
         "endprice": endprice,
-        "images": List<dynamic>.from(images.map((x) => x.toMap())),
+        "images": List<Image>.from(images.map((x) => x.toMap())),
         "name": name,
         "rating": rating,
         "startprice": startprice,
@@ -79,21 +79,21 @@ class Image {
 }
 
 class Uylar {
-  final Car the0;
+  final Car car;
   final List<Image> images;
 
   Uylar({
-    required this.the0,
+    required this.car,
     required this.images,
   });
 
   factory Uylar.fromMap(Map<String, dynamic> json) => Uylar(
-        the0: Car.fromMap(json["0"]),
+        car: Car.fromMap(json["0"]),
         images: List<Image>.from(json["images"].map((x) => Image.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
-        "0": the0.toMap(),
+        "0": car.toMap(),
         "images": List<dynamic>.from(images.map((x) => x.toMap())),
       };
 }

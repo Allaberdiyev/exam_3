@@ -62,5 +62,6 @@ class ProductHttpService {
     } else {
       throw Exception('Failed to load products');
     }
+    return _productList;
   }
 }
