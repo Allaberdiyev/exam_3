@@ -34,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
             List<Products>? products = snapshot.data;
-            print(products);
             if (products != null && products.isNotEmpty) {
               return ListView.builder(
                 itemCount: products.length,
@@ -42,7 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Products product = products[index];
                   return ListTile(
                     title: Text(product.cars.toString()),
-                    subtitle: Text(product.uylar.toString()),
+                    subtitle: Text(product.computer.toString()),
+                    // Boshqa atributlar ham qo'shing
                   );
                 },
               );
